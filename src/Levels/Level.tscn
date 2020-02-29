@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/Characters/DetectiveFrog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Characters/DetectiveFrog/DetectiveFrog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Environment/ToadStool.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/light.png" type="Texture" id=4]
+[ext_resource path="res://src/UI/UI.tscn" type="PackedScene" id=5]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=3]
 0/name = "icon.png 0"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -30,7 +32,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 1 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -53,20 +55,40 @@ scale = Vector2( 2, 2 )
 position = Vector2( 159, 19 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="DetectiveFrog" parent="." instance=ExtResource( 1 )]
-position = Vector2( -48, -40 )
-movementSpeed = 80.0
-jumpSpeed = 150.0
-gravity = 300.0
-
-[node name="LeapController" parent="DetectiveFrog" index="3"]
-maxLeap = 200.0
-
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -3
-tile_set = SubResource( 2 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -196598, 1, 0, -65528, 1, 0, -65526, 1, 0, -65524, 1, 0, -65516, 1, 0, 131064, 1, 0, 131066, 1, 0, 131068, 1, 0, 131070, 1, 0, 65536, 1, 0, 65538, 1, 0, 65540, 1, 0, 65542, 1, 0, 65544, 1, 0, 65546, 1, 0, 65548, 1, 0, 65550, 1, 0, 65552, 1, 0, 65554, 1, 0, 65556, 1, 0, 65558, 1, 0, 65560, 1, 0, 65562, 1, 0 )
 
-[editable path="DetectiveFrog"]
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( -30, -116 )
+texture = ExtResource( 4 )
+color = Color( 0.407843, 0.878431, 0.196078, 1 )
+energy = 3.86
+range_height = 1.0
+shadow_enabled = true
+
+[node name="Light2D3" type="Light2D" parent="."]
+position = Vector2( 562, -164 )
+texture = ExtResource( 4 )
+texture_scale = 1.52
+color = Color( 0.32549, 0.25098, 0.576471, 1 )
+energy = 5.64
+range_height = 1.0
+shadow_enabled = true
+
+[node name="Light2D4" type="Light2D" parent="."]
+position = Vector2( 254, -181 )
+texture = ExtResource( 4 )
+texture_scale = 2.0
+color = Color( 0.619608, 0.176471, 0.615686, 1 )
+energy = 3.0
+range_height = 1.0
+shadow_enabled = true
+
+[node name="DetectiveFrog" parent="." instance=ExtResource( 1 )]
+position = Vector2( -22, -50 )
+
+[node name="UI" parent="." instance=ExtResource( 5 )]

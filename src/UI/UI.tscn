@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/UI/background.png" type="Texture" id=1]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBox" type="NinePatchRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -120.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogueBox"]
+anchor_left = 0.09
+anchor_top = 0.4
+anchor_right = 0.923
+anchor_bottom = 0.667
+margin_left = -0.160004
+margin_top = -32.0
+margin_right = 0.0479736
+margin_bottom = 29.96
+text = "This is some text that i like"
+__meta__ = {
+"_edit_use_anchors_": false
+}

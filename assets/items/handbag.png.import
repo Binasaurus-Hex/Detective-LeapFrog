@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-e12025ef238efa6894e03ecc27781e37.stex"
+path="res://.import/handbag.png-5dc4fcb050f7b6bbd77432616d88ca37.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/background.png"
-dest_files=[ "res://.import/background.png-e12025ef238efa6894e03ecc27781e37.stex" ]
+source_file="res://assets/items/handbag.png"
+dest_files=[ "res://.import/handbag.png-5dc4fcb050f7b6bbd77432616d88ca37.stex" ]
 
 [params]
 

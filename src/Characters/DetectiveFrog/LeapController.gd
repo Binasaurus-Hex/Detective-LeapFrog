@@ -3,7 +3,7 @@ extends Node
 class_name LeapController
 
 export var maxLeap:float = 200
-export var leapGain:float = 10
+export var leapGain:float = 5
 var _charge:float
 var _isOnFloor:bool
 
@@ -12,13 +12,15 @@ func get_velocity(isOnFloor:bool) -> float:
 	charge()
 	if isReady():
 		return release()
-	else:
-		return 0.0
+	elif Input.is_action_just_released("leap"):
+		release()
+	return 0.0
 	
 func charge() -> void:
 	if Input.is_action_pressed("leap"):
 		_charge += leapGain
 	_charge = clamp(_charge,0,maxLeap)
+	Events.emit_signal("leap_set",_charge)
 	
 func release() -> float:
 	var output = _charge

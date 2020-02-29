@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-class_name DetectiveFrog
+class_name Player
 
 export var movementSpeed:float = 200
 export var jumpSpeed:float = 200
@@ -13,13 +13,19 @@ enum Direction {
 	RIGHT = 1
 }
 var direction:int = Direction.RIGHT
+var _interactable:Interactable
+var canMove = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("player")
 	pass # Replace with function body.
 	
 func _physics_process(delta: float) -> void:
-	var inputDir:Vector2 = getInput()
+	if !canMove:
+		return
+	getInput()
+	var inputDir:Vector2 = getMovementInput()
 	var jumpInterrupted:bool = isJumpInterruped(velocity)
 	var leapVelocity:float = leapController.get_velocity(is_on_floor())
 	var new_velocity = getPlayerVelocity(inputDir,velocity,Vector2(movementSpeed,jumpSpeed),jumpInterrupted,leapVelocity,is_on_floor())
@@ -64,13 +70,25 @@ func setDirection(input:Vector2):
 		
 	
 	
-func getInput() -> Vector2:
+func getMovementInput() -> Vector2:
 	var horizontal:float = Input.get_action_strength("moveRight") - Input.get_action_strength("moveLeft")
 	var vertical:float = -1 if Input.get_action_strength("jump") and is_on_floor() else 0.0
 	return Vector2(horizontal,vertical)
-	
+
+func getInput() -> void:
+	if Input.is_action_just_pressed("interact") and _interactable != null:
+		_interactable.action(self)
+		
 func isJumpInterruped(velocity:Vector2) -> bool:
 	return Input.is_action_just_released("jump") and velocity.y < 0.0
 	
 func setAnimation(direction:int) -> void:
 	sprite.scale = Vector2(direction,1)
+	
+func on_interactable_entered(interactable:Interactable) -> void:
+	_interactable = interactable
+	
+func on_interactable_exited() -> void:
+	_interactable = null
+
+

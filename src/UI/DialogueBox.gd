@@ -5,8 +5,8 @@ class_name DialogueBox
 onready var _text:RichTextLabel = $Text
 
 func _ready() -> void:
+	Events.connect("send_dialogue",self,"setBuffer",[20])
 	_text.text = ""
-	setBuffer("This is some text that i want to type",20)
 	pass
 	
 func setBuffer(text:String,speed:float) -> void:

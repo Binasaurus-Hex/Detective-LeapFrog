@@ -20,7 +20,7 @@ func charge() -> void:
 	if Input.is_action_pressed("leap"):
 		_charge += leapGain
 	_charge = clamp(_charge,0,maxLeap)
-	Events.emit_signal("leap_set",_charge)
+	Events.emit_signal("leap_set",_charge/maxLeap * 100)
 	
 func release() -> float:
 	var output = _charge

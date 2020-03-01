@@ -36,13 +36,11 @@ func start() -> void:
 	$Timer.start()
 	if !showing:
 		animated_show()
-	Events.emit_signal("dialogue_show")
 	
 func stop() -> void:
 	$Timer.stop()
 	if showing:
 		animated_hide()
-	Events.emit_signal("dialogue_hide")
 	
 func process_input():
 	if Input.is_action_just_pressed("ui_accept") and finished:
@@ -52,13 +50,16 @@ func progress():
 	stop()
 
 func animated_show() -> void:
-	showing = true
+	Events.emit_signal("dialogue_show")
 	$Tween.interpolate_property(self,"rect_position:y",rect_position.y,rect_position.y - rect_size.y,0.2)
 	$Tween.start()
-	pass
+	yield($Tween,"tween_all_completed")
+	showing = true
 	
 func animated_hide() -> void:
-	showing = false
+	Events.emit_signal("dialogue_hide")
 	$Tween.interpolate_property(self,"rect_position:y",rect_position.y,rect_position.y + rect_size.y,0.2)
 	$Tween.start()
-	pass
+	yield($Tween,"tween_all_completed")
+	showing = false
+	

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Rainforest-SoundBible.com-1791576435.wav-73c3255305c71fdb7244bc0136e9da52.sample"
+
+[deps]
+
+source_file="res://assets/sounds/environment/Rainforest-SoundBible.com-1791576435.wav"
+dest_files=[ "res://.import/Rainforest-SoundBible.com-1791576435.wav-73c3255305c71fdb7244bc0136e9da52.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

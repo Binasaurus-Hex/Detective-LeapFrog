@@ -56,8 +56,10 @@ func getPlayerVelocity(
 	if leapVelocity > 0:
 		output.y = -leapVelocity
 		output.x = direction * leapVelocity
+		$LeapSound.play()
 	elif inputDir.y == -1:
 		output.y = inputDir.y * speed.y
+		$JumpSound.play()
 	if jumpInterruped:
 		output.y = 0
 	output = applyForce(output,Vector2(0,gravity))

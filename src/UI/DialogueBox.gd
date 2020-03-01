@@ -4,9 +4,10 @@ class_name DialogueBox
 
 onready var _text:RichTextLabel = $Text
 var finished:bool = false
+var showing = false
 
 func _ready() -> void:
-	hide()
+	rect_position.y += rect_size.y
 	Events.connect("send_dialogue",self,"setBuffer",[20])
 	_text.text = ""
 	pass
@@ -25,6 +26,7 @@ func _process(delta: float) -> void:
 func _on_Timer_timeout() -> void:
 	_text.visible_characters += 1
 	if _text.visible_characters == _text.get_total_character_count():
+		$NextButton.wait()
 		finished = true
 		
 	pass # Replace with function body.
@@ -32,12 +34,14 @@ func _on_Timer_timeout() -> void:
 func start() -> void:
 	finished = false
 	$Timer.start()
-	show()
+	if !showing:
+		animated_show()
 	Events.emit_signal("dialogue_show")
 	
 func stop() -> void:
 	$Timer.stop()
-	hide()
+	if showing:
+		animated_hide()
 	Events.emit_signal("dialogue_hide")
 	
 func process_input():
@@ -46,3 +50,15 @@ func process_input():
 	
 func progress():
 	stop()
+
+func animated_show() -> void:
+	showing = true
+	$Tween.interpolate_property(self,"rect_position:y",rect_position.y,rect_position.y - rect_size.y,0.2)
+	$Tween.start()
+	pass
+	
+func animated_hide() -> void:
+	showing = false
+	$Tween.interpolate_property(self,"rect_position:y",rect_position.y,rect_position.y + rect_size.y,0.2)
+	$Tween.start()
+	pass

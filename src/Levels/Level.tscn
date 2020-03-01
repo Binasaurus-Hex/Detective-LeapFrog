@@ -98,6 +98,7 @@ position = Vector2( -22, -50 )
 [node name="Screen" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="Screen" instance=ExtResource( 5 )]
-margin_bottom = 2.0
+margin_left = -4.0
+margin_right = -4.0
 
 [editable path="Handbag"]

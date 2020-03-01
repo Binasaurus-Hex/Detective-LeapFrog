@@ -21,6 +21,12 @@ func _on_dialogue_recieved(dialogue:Array) -> void:
 	has_dialogue = true
 	start()
 	
+func clear_portraits():
+	$CharacterPortraitLeft/TextureRect.texture = null
+	$CharacterPortraitLeft/Name.text = ""
+	$CharacterPortraitRight/TextureRect.texture = null
+	$CharacterPortraitRight/Name.text = ""
+	
 func start() -> void:
 	if !showing:
 		animated_show()
@@ -50,6 +56,12 @@ func animated_hide() -> void:
 	showing = false
 	
 func play_character(speech) -> void:
+	clear_portraits()
 	$TextDisplay.set_buffer(speech.text)
-	print(speech.text)
+	if(speech.name == "Player"):
+		$CharacterPortraitLeft/Name.text = speech.name
+		$CharacterPortraitLeft/TextureRect.texture = load("res://assets/Dialogue/portraits/%s" % speech.portrait)
+	else:
+		$CharacterPortraitRight/Name.text = speech.name
+		$CharacterPortraitRight/TextureRect.texture = load("res://assets/Dialogue/portraits/%s" % speech.portrait)
 	

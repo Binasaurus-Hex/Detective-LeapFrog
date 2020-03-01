@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frogPortrait.png-978a0cfe17c8a73a5be4c7efa9a754d3.stex"
+path="res://.import/handbag.png-e9f2639c844676aa04a757eeb78aaa06.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frog/frogPortrait.png"
-dest_files=[ "res://.import/frogPortrait.png-978a0cfe17c8a73a5be4c7efa9a754d3.stex" ]
+source_file="res://assets/Dialogue/portraits/handbag.png"
+dest_files=[ "res://.import/handbag.png-e9f2639c844676aa04a757eeb78aaa06.stex" ]
 
 [params]
 

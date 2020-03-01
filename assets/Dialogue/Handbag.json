@@ -1,9 +1,10 @@
 [
     {
-        "name":"Player",
+        "name":"Handbag",
+        "portrait":"handbag.png",
         "text":[
-            "This is just a handbag",
-            "I should look somewhere else"
+            "im a handbag",
+            "now die..."
         ]
     }
 ]

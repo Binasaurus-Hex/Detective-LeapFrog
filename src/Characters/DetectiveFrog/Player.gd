@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 class_name Player
 
-export var movementSpeed:float = 200
-export var jumpSpeed:float = 200
+export var movementSpeed:float = 150
+export var jumpSpeed:float = 150
 var velocity:Vector2
 export var gravity:float = 300
 onready var leapController:LeapController = $LeapController
@@ -19,6 +19,8 @@ var canMove = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("player")
+	Events.connect("dialogue_show",self,"on_dialogue_show")
+	Events.connect("dialogue_hide",self,"on_dialogue_hide")
 	pass # Replace with function body.
 	
 func _physics_process(delta: float) -> void:
@@ -90,5 +92,11 @@ func on_interactable_entered(interactable:Interactable) -> void:
 	
 func on_interactable_exited() -> void:
 	_interactable = null
+	
+func on_dialogue_hide():
+	canMove = true
+	
+func on_dialogue_show():
+	canMove = false
 
 

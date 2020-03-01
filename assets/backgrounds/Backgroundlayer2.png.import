@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/detectiveFrog.png-b9630e9b0d5193398560eaf6df875919.stex"
+path="res://.import/Backgroundlayer2.png-1f299fa8aaa0a8cfd055924855c96da3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/frog/detectiveFrog.png"
-dest_files=[ "res://.import/detectiveFrog.png-b9630e9b0d5193398560eaf6df875919.stex" ]
+source_file="res://assets/backgrounds/Backgroundlayer2.png"
+dest_files=[ "res://.import/Backgroundlayer2.png-1f299fa8aaa0a8cfd055924855c96da3.stex" ]
 
 [params]
 

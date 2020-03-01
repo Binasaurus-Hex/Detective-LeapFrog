@@ -2,6 +2,9 @@ extends NinePatchRect
 
 class_name DialogueBox
 
+signal dialogue_hide
+signal dialogue_show
+
 var finished:bool = false
 var showing = false
 var dialogue:Array
@@ -29,39 +32,45 @@ func clear_portraits():
 	
 func start() -> void:
 	if !showing:
+		Events.emit_signal("dialogue_start")
 		animated_show()
 		play_character(dialogue[conversation_index])
 		
 func _on_finished_playing_character():
-	stop()
-	pass
+	animated_hide()
+	conversation_index+=1
+	if conversation_index + 1 > dialogue.size():
+		stop()
+	else:
+		yield(self,"dialogue_hide")
+		play_character(dialogue[conversation_index])
 	
 func stop() -> void:
 	if showing:
-		animated_hide()
+		Events.emit_signal("dialogue_end")
 		
 
 func animated_show() -> void:
-	Events.emit_signal("dialogue_show")
 	$Tween.interpolate_property(self,"rect_position:y",rect_position.y,rect_position.y - rect_size.y,0.2)
 	$Tween.start()
 	yield($Tween,"tween_all_completed")
 	showing = true
+	emit_signal("dialogue_show")
 	
 func animated_hide() -> void:
-	Events.emit_signal("dialogue_hide")
 	$Tween.interpolate_property(self,"rect_position:y",rect_position.y,rect_position.y + rect_size.y,0.2)
 	$Tween.start()
 	yield($Tween,"tween_all_completed")
 	showing = false
+	emit_signal("dialogue_hide")
 	
 func play_character(speech) -> void:
 	clear_portraits()
 	$TextDisplay.set_buffer(speech.text)
 	if(speech.name == "Player"):
-		$CharacterPortraitLeft/Name.text = speech.name
+		$CharacterPortraitLeft/Name.text = speech.title
 		$CharacterPortraitLeft/TextureRect.texture = load("res://assets/Dialogue/portraits/%s" % speech.portrait)
 	else:
-		$CharacterPortraitRight/Name.text = speech.name
+		$CharacterPortraitRight/Name.text = speech.title
 		$CharacterPortraitRight/TextureRect.texture = load("res://assets/Dialogue/portraits/%s" % speech.portrait)
-	
+	animated_show()

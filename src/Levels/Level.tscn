@@ -110,4 +110,14 @@ position = Vector2( -22, -50 )
 margin_left = -4.0
 margin_right = -4.0
 
+[editable path="ToadStool"]
+
+[editable path="ToadStool2"]
+
+[editable path="ToadStool3"]
+
+[editable path="ToadStool5"]
+
+[editable path="ToadStool4"]
+
 [editable path="Handbag"]

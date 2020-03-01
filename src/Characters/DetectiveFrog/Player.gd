@@ -19,8 +19,8 @@ var canMove = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("player")
-	Events.connect("dialogue_show",self,"on_dialogue_show")
-	Events.connect("dialogue_hide",self,"on_dialogue_hide")
+	Events.connect("dialogue_start",self,"on_dialogue_start")
+	Events.connect("dialogue_end",self,"on_dialogue_end")
 	pass # Replace with function body.
 	
 func _physics_process(delta: float) -> void:
@@ -93,10 +93,10 @@ func on_interactable_entered(interactable:Interactable) -> void:
 func on_interactable_exited() -> void:
 	_interactable = null
 	
-func on_dialogue_hide():
+func on_dialogue_end():
 	canMove = true
 	
-func on_dialogue_show():
+func on_dialogue_start():
 	canMove = false
 
 

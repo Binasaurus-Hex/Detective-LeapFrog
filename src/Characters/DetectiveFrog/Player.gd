@@ -29,10 +29,15 @@ func _physics_process(delta: float) -> void:
 	getInput()
 	var inputDir:Vector2 = getMovementInput()
 	var jumpInterrupted:bool = isJumpInterruped(velocity)
-	var leapVelocity:float = leapController.get_velocity(is_on_floor())
-	var new_velocity = getPlayerVelocity(inputDir,velocity,Vector2(movementSpeed,jumpSpeed),jumpInterrupted,leapVelocity,is_on_floor())
+	var wall_sliding = is_sliding_on_wall()
+	if wall_sliding:
+		velocity = applyForce(velocity,Vector2(200*get_wall_direction(),0))
+		setDirection(Vector2(get_wall_direction() * -1,0))
+	else:
+		setDirection(inputDir)
+	var leapVelocity:float = leapController.get_velocity(is_on_floor() or is_sliding_on_wall())
+	var new_velocity = getPlayerVelocity(inputDir,velocity,Vector2(movementSpeed,jumpSpeed),jumpInterrupted,leapVelocity,is_on_floor(),is_sliding_on_wall())
 	velocity = move_and_slide(new_velocity,Vector2.UP)
-	setDirection(inputDir)
 	setAnimation(direction)
 	
 func getPlayerVelocity(
@@ -41,7 +46,8 @@ func getPlayerVelocity(
 		speed:Vector2,
 		jumpInterruped:bool,
 		leapVelocity:float,
-		onFloor:bool
+		onFloor:bool,
+		onWall:bool
 	) -> Vector2:
 	var output:Vector2 = velocity
 	if inputDir.x != 0 or onFloor:
@@ -54,7 +60,18 @@ func getPlayerVelocity(
 	if jumpInterruped:
 		output.y = 0
 	output = applyForce(output,Vector2(0,gravity))
+	if onWall:
+		output = applyForce(output,Vector2(0,-gravity * 0.95))
 	return output
+	
+func is_sliding_on_wall() -> bool:
+	return $Left.is_colliding() || $Right.is_colliding()
+	
+func get_wall_direction() -> int:
+	if $Left.is_colliding():
+		return -1
+	else:
+		return 1
 	
 	
 

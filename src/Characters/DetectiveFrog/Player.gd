@@ -6,12 +6,14 @@ export var movementSpeed:float = 150
 export var jumpSpeed:float = 150
 var velocity:Vector2
 export var gravity:float = 300
+export var death_velocity:int = 400
 onready var leapController:LeapController = $LeapController
 onready var sprite:Sprite = $Sprite
 enum Direction {
 	LEFT = -1,
 	RIGHT = 1
 }
+var prev_velocity:Vector2 = Vector2.ZERO
 var direction:int = Direction.RIGHT
 var _interactable:Interactable
 var canMove = true
@@ -26,6 +28,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !canMove:
 		return
+	check_fall()
 	getInput()
 	var inputDir:Vector2 = getMovementInput()
 	var jumpInterrupted:bool = isJumpInterruped(velocity)
@@ -56,6 +59,7 @@ func getPlayerVelocity(
 	if leapVelocity > 0:
 		output.y = -leapVelocity
 		output.x = direction * leapVelocity
+		$LeapSound.volume_db *= leapVelocity/$LeapController.maxLeap
 		$LeapSound.play()
 	elif inputDir.y == -1:
 		output.y = inputDir.y * speed.y
@@ -75,9 +79,17 @@ func get_wall_direction() -> int:
 		return -1
 	else:
 		return 1
+		
+func die():
+	get_tree().reload_current_scene()
+	pass
 	
 	
-
+func check_fall() -> void:
+	if (is_on_floor() or is_on_wall()) and prev_velocity.y > death_velocity:
+		die()
+	prev_velocity = velocity
+		
 func applyForce(velocity:Vector2, force:Vector2) -> Vector2:
 	velocity.y += force.y * get_physics_process_delta_time()
 	velocity.x += force.x * get_physics_process_delta_time()

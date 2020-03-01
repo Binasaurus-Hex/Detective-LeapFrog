@@ -4,9 +4,9 @@
 [ext_resource path="res://src/Environment/ToadStool.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://assets/light.png" type="Texture" id=4]
-[ext_resource path="res://src/UI/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Screen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Interactables/Items/Handbag.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/backgrounds/Jungle.jpg" type="Texture" id=7]
+[ext_resource path="res://src/ParallaxBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Interactables/Characters/Whore.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -42,14 +42,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [node name="Level" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.1, 0.1 )
-
-[node name="Jungle" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 35, 0 )
-texture = ExtResource( 7 )
+[node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
 [node name="ToadStool" parent="." instance=ExtResource( 2 )]
 
@@ -106,11 +99,7 @@ position = Vector2( -167, 18 )
 [node name="DetectiveFrog" parent="." instance=ExtResource( 1 )]
 position = Vector2( -22, -50 )
 
-[node name="Screen" type="CanvasLayer" parent="."]
-
-[node name="UI" parent="Screen" instance=ExtResource( 5 )]
-margin_left = -4.0
-margin_right = -4.0
+[node name="Screen" parent="." instance=ExtResource( 5 )]
 
 [node name="Whore" parent="." instance=ExtResource( 8 )]
 position = Vector2( 555, -50 )

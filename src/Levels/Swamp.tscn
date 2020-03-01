@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Characters/DetectiveFrog/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ParallaxBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/backgrounds/RoughCollision.png" type="Texture" id=4]
+
+[node name="Swamp" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2( 976, -1275 )
+
+[node name="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+position = Vector2( 993, -1101 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 979, -1283 )
+
+[node name="background" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -1498, 1406, -1375, 1405, -1344, 1373, -1309, 1412, -905, 1421, -812, 1442, -760, 1420, -688, 1364, -628, 1148, -507, 1193, -563, 1203, -602, 1421, -571, 1492, 358, 1498, 542, 1293, 789, 1291, 945, 1310, 1022, 1157, 1054, 1114, 1029, 946, 1044, 763, 1004, 703, 933, 689, 780, 760, 770, 734, 916, 661, 1040, 689, 1012, 406, 884, 314, 890, 297, 1015, 363, 999, -822, 790, -819, 583, -481, 408, -373, 175, -334, -143, -239, -648, -36, -805, -23, -760, -79, -691, -70, -464, -159, -417, -247, -309, -226, -246, -275, 52, -405, 496, -483, 578, -588, 578, -733, 600, -789, 565, -850, 574, -932, 684, -932, 749, -1009, 803, -1027, 1409, -1042, 1488, -1048, 1508, 1596, -1500, 1573 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 792, 1157, 237, 988, 221, 931, -64, 840, -58, 822, -16, 841, 24, 853, 44, 848, 249, 909, 369, 876, 625, 938, 653, 923, 705, 923, 796, 943, 842, 972, 844, 1153 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -74, 820, -107, 804, -153, 801, -226, 812, -252, 826, -331, 829, -419, 771, -460, 725, -479, 717, -559, 718, -556, 592, -580, 580, -580, 640, -648, 666, -652, 545, -668, 534, -686, 370, -464, 259, -504, 161, -734, 266, -758, 356, -627, 956, -100, 865 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 33, 405, 136, 378, 274, 445, 249, 450, 147, 419, 93, 472 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 364, 411, 513, 339, 589, 272, 665, 271, 610, 320, 512, 393, 402, 438 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 610, 101, 678, 36, 658, -88, 630, -96, 426, -7, 482, 126, 464, 134, 364, -41, 389, -62, 442, -46, 635, -157, 721, -110, 686, -82, 705, -54, 697, 29, 708, 112, 662, 135 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 227, -46, 190, -34, 143, -48, -87, 8, -92, 60, -74, 74, 208, -8, 208, 136, 232, 136 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -792, 227, -928, 198, -931, 218, -791, 253 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -1234, 244, -1017, 152, -1027, 138, -1227, 151, -1227, 2, -1154, -81, -1055, -131, -1067, -147, -1257, -81, -1293, 115, -1254, 402, -1231, 591, -1210, 580 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -1031, -152, -1021, -126, -377, -393, -76, -540, 302, -607, 391, -740, 396, -933, 230, -945, 128, -900, 42, -678, -423, -433 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -443, 104 )
+scale = Vector2( 2, 2 )
+movementSpeed = 300.0
+jumpSpeed = 300.0
+gravity = 600.0
+death_velocity = 800
+
+[node name="LeapController" parent="Player" index="1"]
+maxLeap = 400.0
+leapGain = 10.0
+
+[node name="Camera2D" parent="Player" index="3"]
+zoom = Vector2( 1, 1 )
+
+[node name="Screen" parent="." instance=ExtResource( 1 )]
+
+[editable path="ParallaxBackground"]
+
+[editable path="Player"]

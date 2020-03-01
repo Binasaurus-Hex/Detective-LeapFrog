@@ -40,7 +40,7 @@ func play_phrase(phrase:String,speed:int):
 	
 func _on_Timer_timeout() -> void:
 	visible_characters += 1
-	$TextSound.play(0)
+	$TextSound.play()
 	if visible_characters == current_text.length():
 		$Timer.stop()
 		$NextButton.show_btn()

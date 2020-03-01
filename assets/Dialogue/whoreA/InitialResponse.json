@@ -1,0 +1,19 @@
+[
+
+    {
+        "name":"Player",
+        "title":"Lt.LeapFrog",
+        "portrait":"frogPortrait.png",
+        "text":[
+            "*These damn Whores*"
+        ]
+    },
+    {
+        "name":"WhoreA",
+        "title":"Dirty Whore",
+        "portrait":"whoreA.png",
+        "text":[
+            "Hey sugar! lookin' for some fun?"
+        ]
+    }
+]

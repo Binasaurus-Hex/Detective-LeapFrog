@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 	var jumpInterrupted:bool = isJumpInterruped(velocity)
 	var wall_sliding = is_sliding_on_wall()
 	if wall_sliding:
-		velocity = applyForce(velocity,Vector2(200*get_wall_direction(),0))
+		if velocity.y >= 0:
+			velocity = applyForce(velocity,Vector2(200*get_wall_direction(),0))
 		setDirection(Vector2(get_wall_direction() * -1,0))
 	else:
 		setDirection(inputDir)

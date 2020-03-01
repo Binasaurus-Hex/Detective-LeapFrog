@@ -47,6 +47,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 motion_scale = Vector2( 0.1, 0.1 )
 
 [node name="Jungle" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 35, 0 )
 texture = ExtResource( 7 )
 
 [node name="ToadStool" parent="." instance=ExtResource( 2 )]

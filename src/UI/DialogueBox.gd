@@ -43,6 +43,7 @@ func _on_finished_playing_character():
 		stop()
 	else:
 		yield(self,"dialogue_hide")
+		yield(get_tree().create_timer(0.5), "timeout")
 		play_character(dialogue[conversation_index])
 	
 func stop() -> void:

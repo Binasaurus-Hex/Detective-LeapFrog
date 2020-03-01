@@ -2,52 +2,38 @@ extends NinePatchRect
 
 class_name DialogueBox
 
-onready var _text:RichTextLabel = $Text
 var finished:bool = false
 var showing = false
+var dialogue:Array
+var has_dialogue:bool
+var conversation_index:int = 0
 
 func _ready() -> void:
 	rect_position.y += rect_size.y
-	Events.connect("send_dialogue",self,"setBuffer",[20])
-	_text.text = ""
+	Events.connect("send_dialogue",self,"_on_dialogue_recieved")
+	$TextDisplay.connect("finished_playing_character",self,"_on_finished_playing_character")
 	pass
 	
-func setBuffer(text:String,speed:float) -> void:
-	_text.bbcode_text = text
-	_text.visible_characters = 0
-	$Timer.wait_time = 1/speed
+	
+func _on_dialogue_recieved(dialogue:Array) -> void:
+	conversation_index = 0
+	self.dialogue = dialogue
+	has_dialogue = true
 	start()
 	
-func _process(delta: float) -> void:
-	process_input()
-	pass
-
-
-func _on_Timer_timeout() -> void:
-	_text.visible_characters += 1
-	if _text.visible_characters == _text.get_total_character_count():
-		$NextButton.wait()
-		finished = true
-		
-	pass # Replace with function body.
-	
 func start() -> void:
-	finished = false
-	$Timer.start()
 	if !showing:
 		animated_show()
+		play_character(dialogue[conversation_index])
+		
+func _on_finished_playing_character():
+	stop()
+	pass
 	
 func stop() -> void:
-	$Timer.stop()
 	if showing:
 		animated_hide()
-	
-func process_input():
-	if Input.is_action_just_pressed("ui_accept") and finished:
-		progress()
-	
-func progress():
-	stop()
+		
 
 func animated_show() -> void:
 	Events.emit_signal("dialogue_show")
@@ -62,4 +48,8 @@ func animated_hide() -> void:
 	$Tween.start()
 	yield($Tween,"tween_all_completed")
 	showing = false
+	
+func play_character(speech) -> void:
+	$TextDisplay.set_buffer(speech.text)
+	print(speech.text)
 	

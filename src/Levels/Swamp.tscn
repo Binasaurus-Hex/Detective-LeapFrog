@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/DetectiveFrog/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Leafs/droopyLeaf.png" type="Texture" id=6]
 [ext_resource path="res://assets/mushroom/greyShroom.png" type="Texture" id=7]
 [ext_resource path="res://assets/characters/Kroakjak.png" type="Texture" id=8]
+[ext_resource path="res://src/Interactables/Characters/DtCroaker.tscn" type="PackedScene" id=9]
 
 [node name="Swamp" type="Node2D"]
 __meta__ = {
@@ -167,6 +168,12 @@ texture = ExtResource( 7 )
 position = Vector2( 576.409, 437.635 )
 polygon = PoolVector2Array( -466.015, -279.775, -195.344, -162.894, -92.8176, -128.035, 101.983, -119.833, 292.683, -173.147, 411.615, -218.259, 434.17, -257.219 )
 
+[node name="DtCroaker" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1994, -2410 )
+
+[node name="Sprite" parent="DtCroaker" index="0"]
+scale = Vector2( -1, 1 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -443, 104 )
 scale = Vector2( 0.2, 0.2 )
@@ -196,5 +203,7 @@ limit_bottom = 200
 [node name="Screen" parent="." instance=ExtResource( 1 )]
 
 [editable path="ParallaxBackground"]
+
+[editable path="DtCroaker"]
 
 [editable path="Player"]

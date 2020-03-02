@@ -10,6 +10,10 @@
 [ext_resource path="res://assets/characters/Kroakjak.png" type="Texture" id=8]
 
 [node name="Swamp" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -2777.0, 208.0 ],
+"_edit_vertical_guides_": [ 2448.0 ]
+}
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
@@ -65,6 +69,9 @@ polygon = PoolVector2Array( -1234, 244, -1017, 152, -1027, 138, -1227, 151, -122
 
 [node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -1031, -152, -1021, -126, -377, -393, -76, -540, 302, -607, 391, -740, 396, -933, 230, -945, 128, -900, 42, -678, -423, -433 )
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -1786, 1126, -1499, 1120, -1457, 1726, -1868, 1723 )
 
 [node name="LilyPad" type="StaticBody2D" parent="."]
 scale = Vector2( 0.2, 0.2 )
@@ -181,6 +188,10 @@ texture = ExtResource( 8 )
 
 [node name="Camera2D" parent="Player" index="3"]
 zoom = Vector2( 1, 1 )
+limit_left = -500
+limit_top = -2777
+limit_right = 2448
+limit_bottom = 200
 
 [node name="Screen" parent="." instance=ExtResource( 1 )]
 

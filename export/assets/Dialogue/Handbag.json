@@ -1,0 +1,21 @@
+[
+    {
+        "name":"Player",
+        "title":"Lt.Leapfrog",
+        "portrait":"frogPortrait.png",
+        "text":[
+            "Its just a handbag",
+            "I should move on"
+        ]
+    },
+    {
+        "name":"Handbag",
+        "title":"handbag",
+        "portrait":"handbag.png",
+        "text":[
+            "BOO.",
+            "Im not just a handbag",
+            "now DIE!!!!"
+        ]
+    }
+]

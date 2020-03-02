@@ -1,0 +1,56 @@
+[
+    {
+        "name":"Player",
+        "title":"Lt.Leapfrog",
+        "portrait":"frogPortrait.png"
+        "text":[ 
+		"*Smacks Log*",
+		"Whatcha bring me?"
+        ]
+    },
+    {
+        "name":"Kroaker",
+        "title":"Kroaker",
+        "portrait":"frogPortrait.png",
+        "text":[ 
+		"I spoke to the dead girl's mother",
+		"Turns out, she wasn't a hooker,",
+		"She was a good, good girl"
+        ]
+    },
+    {
+        "name":"Player",
+        "title":"Lt.Leapfrog",
+        "portrait":"frogPortrait.png"
+        "text":[ 
+		"*sigh*"	
+        ]
+    },
+    {
+        "name":"Player",
+        "title":"",
+        "portrait":""
+        "text":[ 
+		"Detective Croaker is as green as can be",
+		"But I've seen it all..."	
+        ]
+    },
+    {
+        "name":"Player",
+        "title":"Lt.Leapfrog",
+        "portrait":"frogPortrait.png"
+        "text":[ 
+		"Yup, she was a good girl alright.",
+		"Momma's apple pie,",
+		"The 4th of July..."	
+        ]
+    },
+    {
+        "name":"Player",
+        "title":"Lt.Leapfrog",
+        "portrait":"frogPortrait.png"
+        "text":[ 
+		"SHE WAS A HOOKAH!"	
+        ]
+    }
+]

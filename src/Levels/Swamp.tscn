@@ -108,15 +108,15 @@ position = Vector2( 6112.82, 304.011 )
 polygon = PoolVector2Array( -474.061, -99.8296, 470.724, -72.5575, 365.531, -0.481079, 131.77, 61.8552, -168.223, 26.791, -413.673, -31.6493 )
 
 [node name="Leaf" type="StaticBody2D" parent="."]
-rotation = -0.197222
+rotation = 0.619592
 
 [node name="Sprite" type="Sprite" parent="Leaf"]
-position = Vector2( 1084.32, -514.462 )
+position = Vector2( 294.358, -1128.59 )
 scale = Vector2( 0.384429, 0.384429 )
 texture = ExtResource( 6 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf"]
-position = Vector2( 287.524, 214.426 )
+position = Vector2( -502.438, -399.699 )
 polygon = PoolVector2Array( 765.955, -779.364, 793.933, -805.537, 830.935, -791.097, 826.423, -758.607, 804.763, -768.534, 721.733, -736.045, 719.026, -745.07 )
 
 [node name="Leaf2" type="StaticBody2D" parent="."]

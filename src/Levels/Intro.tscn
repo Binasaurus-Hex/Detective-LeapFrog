@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Fader.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Screen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/backgrounds/DeadHooker.png" type="Texture" id=3]
 [ext_resource path="res://src/Dialogue/DialogueRadio.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
@@ -25,6 +26,9 @@ func _start_level():
 script = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 960.781, 542.411 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
 
 [node name="Screen" parent="." instance=ExtResource( 2 )]
 

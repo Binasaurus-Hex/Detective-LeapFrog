@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Characters/DetectiveFrog/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/backgrounds/RoughCollision.png" type="Texture" id=4]
+[ext_resource path="res://assets/Leafs/Lily.png" type="Texture" id=5]
+[ext_resource path="res://assets/Leafs/droopyLeaf.png" type="Texture" id=6]
+[ext_resource path="res://assets/mushroom/greyShroom.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/Kroakjak.png" type="Texture" id=8]
 
 [node name="Swamp" type="Node2D"]
 
@@ -22,6 +26,9 @@ motion_scale = Vector2( 0.8, 0.8 )
 [node name="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 position = Vector2( 993, -1101 )
 scale = Vector2( 1.3, 1.3 )
+
+[node name="Sprite" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+position = Vector2( 965.05, -1270 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 979, -1283 )
@@ -59,17 +66,118 @@ polygon = PoolVector2Array( -1234, 244, -1017, 152, -1027, 138, -1227, 151, -122
 [node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -1031, -152, -1021, -126, -377, -393, -76, -540, 302, -607, 391, -740, 396, -933, 230, -945, 128, -900, 42, -678, -423, -433 )
 
+[node name="LilyPad" type="StaticBody2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Sprite" type="Sprite" parent="LilyPad"]
+position = Vector2( 3087.3, 145.328 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LilyPad"]
+position = Vector2( 3087.3, 145.328 )
+polygon = PoolVector2Array( -474.061, -99.8296, 470.724, -72.5575, 365.531, -0.481079, 131.77, 61.8552, -168.223, 26.791, -413.673, -31.6493 )
+
+[node name="LilyPad2" type="StaticBody2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Sprite" type="Sprite" parent="LilyPad2"]
+position = Vector2( 4402.3, 230.327 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LilyPad2"]
+position = Vector2( 4402.3, 230.327 )
+polygon = PoolVector2Array( -474.061, -99.8296, 470.724, -72.5575, 365.531, -0.481079, 131.77, 61.8552, -168.223, 26.791, -413.673, -31.6493 )
+
+[node name="LilyPad3" type="StaticBody2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Sprite" type="Sprite" parent="LilyPad3"]
+position = Vector2( 6112.82, 304.011 )
+texture = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LilyPad3"]
+position = Vector2( 6112.82, 304.011 )
+polygon = PoolVector2Array( -474.061, -99.8296, 470.724, -72.5575, 365.531, -0.481079, 131.77, 61.8552, -168.223, 26.791, -413.673, -31.6493 )
+
+[node name="Leaf" type="StaticBody2D" parent="."]
+rotation = -0.197222
+
+[node name="Sprite" type="Sprite" parent="Leaf"]
+position = Vector2( 1084.32, -514.462 )
+scale = Vector2( 0.384429, 0.384429 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf"]
+position = Vector2( 287.524, 214.426 )
+polygon = PoolVector2Array( 765.955, -779.364, 793.933, -805.537, 830.935, -791.097, 826.423, -758.607, 804.763, -768.534, 721.733, -736.045, 719.026, -745.07 )
+
+[node name="Leaf2" type="StaticBody2D" parent="."]
+rotation = 0.328122
+scale = Vector2( 1.5, 1.4 )
+
+[node name="Sprite" type="Sprite" parent="Leaf2"]
+position = Vector2( 291.209, -560.204 )
+scale = Vector2( 0.384429, 0.384429 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf2"]
+position = Vector2( -505.585, 168.684 )
+polygon = PoolVector2Array( 765.955, -779.364, 793.933, -805.537, 830.935, -791.097, 826.423, -758.607, 804.763, -768.534, 721.733, -736.045, 719.026, -745.07 )
+
+[node name="Leaf3" type="StaticBody2D" parent="."]
+rotation = -3.07702
+scale = Vector2( 1.5, 1.4 )
+
+[node name="Sprite" type="Sprite" parent="Leaf3"]
+position = Vector2( 27.7975, 932.595 )
+scale = Vector2( 0.384429, 0.384429 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Leaf3"]
+position = Vector2( -768.997, 1661.48 )
+polygon = PoolVector2Array( 765.955, -779.364, 793.933, -805.537, 830.935, -791.097, 826.423, -758.607, 804.763, -768.534, 721.733, -736.045, 719.026, -745.07 )
+
+[node name="Mushroom" type="StaticBody2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Sprite" type="Sprite" parent="Mushroom"]
+position = Vector2( -505.261, 521.05 )
+texture = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mushroom"]
+position = Vector2( -505.261, 521.05 )
+polygon = PoolVector2Array( -466.015, -279.775, -195.344, -162.894, -92.8176, -128.035, 101.983, -119.833, 292.683, -173.147, 411.615, -218.259, 434.17, -257.219 )
+
+[node name="Mushroom2" type="StaticBody2D" parent="."]
+rotation = -0.253073
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Sprite" type="Sprite" parent="Mushroom2"]
+position = Vector2( 576.409, 437.635 )
+texture = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mushroom2"]
+position = Vector2( 576.409, 437.635 )
+polygon = PoolVector2Array( -466.015, -279.775, -195.344, -162.894, -92.8176, -128.035, 101.983, -119.833, 292.683, -173.147, 411.615, -218.259, 434.17, -257.219 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -443, 104 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.2, 0.2 )
 movementSpeed = 300.0
 jumpSpeed = 300.0
 gravity = 600.0
 death_velocity = 800
 
+[node name="CollisionShape2D" parent="Player" index="0"]
+scale = Vector2( 2, 2 )
+
 [node name="LeapController" parent="Player" index="1"]
 maxLeap = 400.0
 leapGain = 10.0
+
+[node name="Sprite" parent="Player" index="2"]
+position = Vector2( 0, 0.646179 )
+texture = ExtResource( 8 )
 
 [node name="Camera2D" parent="Player" index="3"]
 zoom = Vector2( 1, 1 )
